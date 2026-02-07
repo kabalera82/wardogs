@@ -22,20 +22,18 @@ export const Hero = () => {
     <div className="bg-[#0a0a0a] min-h-screen text-gray-200 font-sans selection:bg-red-600 selection:text-white">
 
       {/* === HERO SECTION === */}
-      <section id="inicio" className="relative h-[600px] w-full mt-16">
+      <section id="inicio" className="relative h-[350px] w-full mt-16">
         <div className="absolute inset-0">
-          <img 
-            src="/hero-bg.jpg" 
-            alt="MMA Fight" 
-            className="w-full h-full object-cover opacity-60"
-          />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-black/50"></div>
         </div>
 
-        <div className="absolute bottom-20 left-4 md:left-12 max-w-4xl z-10">
-          <h1 className="text-5xl md:text-7xl font-bold text-white uppercase tracking-tighter italic leading-none">
-            Dominate. <span className="text-gray-400">Train.</span> Conquer.
+        <div className="absolute inset-0 z-10 flex items-center justify-between px-8 md:px-24 lg:px-32">
+          <h1 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-tighter italic leading-tight max-w-md">
+            Dominate. <span className="text-gray-400">Train.</span><br />Conquer.
           </h1>
+          <div className="flex-1 flex justify-end items-center pr-8 md:pr-16">
+            <img src="/wardogs.webp" alt="Logo" className="h-40 md:h-56 w-auto" />
+          </div>
         </div>
       </section>
 
@@ -48,6 +46,7 @@ export const Hero = () => {
             <h2 className="text-2xl font-bold text-white uppercase mb-6 tracking-wide border-l-4 border-red-600 pl-3">
               Featured Fights
             </h2>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FightCard 
                 fighter1="Lenny 'Skin' Tech" 
@@ -73,7 +72,7 @@ export const Hero = () => {
                 {[...Array(8)].map((_, i) => (
                   <div key={i} className="aspect-square relative group overflow-hidden bg-gray-900">
                     <img 
-                      src={`/gallery-${i+1}.jpg`} 
+                      src={`/assets/0${i+1}.jpeg`} 
                       alt="Gallery" 
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 opacity-80 group-hover:opacity-100"
                     />
@@ -86,20 +85,14 @@ export const Hero = () => {
 
         <aside className="lg:col-span-1 space-y-8">
           <div className="bg-[#111] p-4">
-            <h3 className="text-xl font-bold text-white uppercase mb-4 text-right">User Zone</h3>
+            <h3 className="text-xl font-bold text-white uppercase mb-4 text-right">Horarios</h3>
             
             <div className="flex flex-col gap-2">
-              <button className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 uppercase text-left transition-all">
-                🔒 Profile
-              </button>
-              
-              <button className="bg-[#1a1a1a] hover:bg-[#252525] text-gray-300 font-bold py-3 px-4 uppercase text-left transition-all border border-gray-800">
-                Forums
-              </button>
-              
-              <button className="bg-[#1a1a1a] hover:bg-[#252525] text-red-500 font-bold py-3 px-4 uppercase text-left transition-all border border-gray-800">
-                🔒 Register
-              </button>
+               <img 
+            src="/image.png" 
+            alt="MMA Fight" 
+            className="w-full h-full object-cover opacity-60"
+          />
             </div>
 
             <div className="mt-6 text-right text-sm text-gray-400 space-y-1">

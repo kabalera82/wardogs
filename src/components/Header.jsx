@@ -13,12 +13,10 @@ export const Header = () => {
     return (
         <nav className="flex justify-between items-center px-6 py-4 bg-black fixed top-0 left-0 right-0 z-50 shadow-lg">
             
-            {/* LOGO: En la imagen es un logo gráfico. Aquí mantengo texto pero estilizado o un placeholder de imagen */}
             <div className="flex items-center">
                 <div className="text-2xl font-bold text-white tracking-tighter uppercase cursor-pointer">
                     <span className="text-red-600">War</span>Dogs
                 </div>
-                <img src="/wardogs.webp" alt="Logo" className="h-16 w-auto" />
             </div>
 
             {/* MENÚ DE NAVEGACIÓN */}
