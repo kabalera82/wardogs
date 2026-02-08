@@ -1,16 +1,84 @@
-# React + Vite
+# WarDogs - MMA Fighting Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Full-stack monorepo for the WarDogs MMA application.
 
-Currently, two official plugins are available:
+## Project Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+wardogs/
+├── frontend/          # React + Vite application
+├── backend/           # Node.js + Express API
+└── README.md         # This file
+```
 
-## React Compiler
+## Quick Start
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Frontend (React + Vite)
 
-## Expanding the ESLint configuration
+```bash
+cd frontend
+npm install
+npm run dev -- --host
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Frontend runs on: `http://localhost:5173`
+
+### Backend (Node.js + Express)
+
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+Backend runs on: `http://localhost:3000`
+
+## Development
+
+1. **Start Backend First**:
+   ```bash
+   cd backend && npm run dev
+   ```
+
+2. **Start Frontend**:
+   ```bash
+   cd frontend && npm run dev -- --host
+   ```
+
+3. **Access Application**:
+   - Frontend: http://localhost:5173
+   - Backend API: http://localhost:3000/api/health
+
+## Deployment
+
+### Frontend (Vercel)
+- Deploy the `frontend/` directory
+- Build command: `npm run build`
+- Output directory: `dist`
+
+### Backend (Render.com / Railway / Fly.io)
+- Deploy the `backend/` directory
+- Start command: `npm start`
+- Environment variables: See `backend/.env.example`
+
+## Tech Stack
+
+### Frontend
+- React 19.2.0
+- Vite 7.2.4
+- Tailwind CSS 4.1.18
+- ESLint
+
+### Backend
+- Node.js
+- Express 4.18.2
+- CORS
+- dotenv
+
+## API Endpoints
+
+See `backend/README.md` for detailed API documentation.
+
+## License
+
+ISC
