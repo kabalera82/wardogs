@@ -6,12 +6,18 @@ export const API_URL = `${BACKEND_URL}/api`;
 export const fetchAPI = async (endpoint, options = {}) => {
     const url = `${API_URL}${endpoint}`;
 
+    const defaultHeaders = {};
+    // Solo establecer Content-Type: application/json si NO es FormData
+    if (!(options.body instanceof FormData)) {
+        defaultHeaders['Content-Type'] = 'application/json';
+    }
+
     const config = {
+        ...options,
         headers: {
-            'Content-Type': 'application/json',
+            ...defaultHeaders,
             ...options.headers,
         },
-        ...options,
     };
 
     try {
@@ -20,12 +26,14 @@ export const fetchAPI = async (endpoint, options = {}) => {
 
         // Log con safe parsing del body
         let bodyParsed = null;
-        if (config.body) {
+        if (config.body && !(config.body instanceof FormData)) {
             try {
                 bodyParsed = typeof config.body === 'string' ? JSON.parse(config.body) : config.body;
             } catch (e) {
                 bodyParsed = '[Cannot parse body]';
             }
+        } else if (config.body instanceof FormData) {
+            bodyParsed = '[FormData]';
         }
 
         console.log('[API] Request:', JSON.stringify({ url, method: config.method || 'GET', bodyParsed }, null, 2));
@@ -47,13 +55,14 @@ export const fetchAPI = async (endpoint, options = {}) => {
 export const fetchConToken = async (endpoint, options = {}) => {
     const token = localStorage.getItem('wardogs_token');
 
+    const headers = {
+        Authorization: token ? `Bearer ${token}` : '',
+        ...options.headers,
+    };
+
     return fetchAPI(endpoint, {
         ...options,
-        headers: {
-            'Content-Type': 'application/json',
-            ...options.headers,
-            Authorization: token ? `Bearer ${token}` : '',
-        },
+        headers,
     });
 };
 
