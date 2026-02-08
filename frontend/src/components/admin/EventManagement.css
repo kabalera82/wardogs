@@ -1,0 +1,128 @@
+.event-dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.event-form-card,
+.event-list-card {
+    background: rgba(30, 30, 30, 0.5);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.event-form-card h3,
+.event-list-card h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: var(--accent-color);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+}
+
+.btn-add-event {
+    width: 100%;
+    background: var(--accent-color);
+    color: black;
+    padding: 1rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-add-event:hover {
+    transform: translateY(-2px);
+}
+
+/* Lista de eventos */
+.events-scroll {
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.event-item {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.2s;
+}
+
+.event-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.event-item-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.event-item-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.placeholder-img {
+    width: 100%;
+    height: 100%;
+    background: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.event-item-info {
+    flex-grow: 1;
+}
+
+.event-item-info h4 {
+    margin: 0 0 0.3rem 0;
+    font-size: 1rem;
+}
+
+.event-date,
+.event-location {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+.btn-delete-event {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.btn-delete-event:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.no-events {
+    text-align: center;
+    color: #666;
+    margin-top: 2rem;
+}
+
+@media (max-width: 900px) {
+    .event-dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}

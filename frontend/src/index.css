@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body {
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    background: #1c1c1c;
+    color: #e8dcc2;
+    background-image: url('./gun-metal.png');
+    background-attachment: fixed;
+
+}
+
+
