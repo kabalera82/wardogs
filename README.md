@@ -1,84 +1,160 @@
-# WarDogs - MMA Fighting Platform
+# 🥊 WarDogs — Frontend
 
-Full-stack monorepo for the WarDogs MMA application.
+Interfaz web de la plataforma MMA **WarDogs**. Incluye noticias, galería, tienda, agenda de clases, perfil de usuario y panel de administración completo.
 
-## Project Structure
+Conecta con la API REST [backendWardogs](https://github.com/kabalera82/backendWardogs).
 
-```
-wardogs/
-├── frontend/          # React + Vite application
-├── backend/           # Node.js + Express API
-└── README.md         # This file
-```
+---
 
-## Quick Start
+## Stack Tecnológico
 
-### Frontend (React + Vite)
+- **Framework:** React 19
+- **Bundler:** Vite 7
+- **Estilos:** Tailwind CSS 4
+- **Router:** React Router DOM 7
+- **Estado global:** Context API (AuthContext)
+- **Auth:** jwt-decode
+- **Iconos:** react-icons
+- **Deploy:** Vercel
+
+---
+
+## Características
+
+- 🏠 Landing page con hero, noticias destacadas y horario de clases
+- 🛒 Tienda de productos con listado y detalle
+- 📰 Sección de noticias
+- 🥋 Página de luchadores del equipo
+- 🔐 Autenticación JWT — login/logout con roles
+- 👤 Panel de usuario: perfil, avatar, eventos inscritos
+- 🛡️ Panel de administración: gestión de usuarios, productos, noticias, galería, eventos y contenido destacado
+- 🚧 Rutas protegidas con `ProtectedRoute`
+
+---
+
+## Instalación
 
 ```bash
-cd frontend
+# 1. Clonar el repositorio
+git clone https://github.com/kabalera82/wardogs.git
+cd wardogs
+
+# 2. Instalar dependencias
 npm install
-npm run dev -- --host
-```
 
-Frontend runs on: `http://localhost:5173`
+# 3. Variables de entorno
+cp .env.development .env.local
+# Editar con la URL de tu API
 
-### Backend (Node.js + Express)
-
-```bash
-cd backend
-npm install
+# 4. Arrancar en desarrollo
 npm run dev
 ```
 
-Backend runs on: `http://localhost:3000`
+La app estará disponible en `http://localhost:5173`.
 
-## Development
+---
 
-1. **Start Backend First**:
-   ```bash
-   cd backend && npm run dev
-   ```
+## Variables de Entorno
 
-2. **Start Frontend**:
-   ```bash
-   cd frontend && npm run dev -- --host
-   ```
+```env
+# .env.development
+VITE_BACKEND_URL=http://localhost:3000
 
-3. **Access Application**:
-   - Frontend: http://localhost:5173
-   - Backend API: http://localhost:3000/api/health
+# .env.production
+VITE_BACKEND_URL=https://backend-wardogs.vercel.app
+```
 
-## Deployment
+---
 
-### Frontend (Vercel)
-- Deploy the `frontend/` directory
-- Build command: `npm run build`
-- Output directory: `dist`
+## Scripts
 
-### Backend (Render.com / Railway / Fly.io)
-- Deploy the `backend/` directory
-- Start command: `npm start`
-- Environment variables: See `backend/.env.example`
+| Comando | Descripción |
+|---------|-------------|
+| `npm run dev` | Servidor de desarrollo |
+| `npm run build` | Build de producción |
+| `npm run preview` | Preview del build |
+| `npm run lint` | Linting con ESLint |
 
-## Tech Stack
+---
 
-### Frontend
-- React 19.2.0
-- Vite 7.2.4
-- Tailwind CSS 4.1.18
-- ESLint
+## Rutas de la Aplicación
 
-### Backend
-- Node.js
-- Express 4.18.2
-- CORS
-- dotenv
+| Ruta | Acceso | Descripción |
+|------|--------|-------------|
+| `/` | Público | Home — hero, noticias, horario |
+| `/login` | Público | Login de usuario |
+| `/shop` | Público | Tienda de productos |
+| `/news` | Público | Listado de noticias |
+| `/fighters` | Público | Equipo de luchadores |
+| `/profile` | Autenticado | Panel de usuario |
+| `/admin` | Autenticado | Panel de administración |
+| `/dashboard` | Autenticado | Dashboard |
 
-## API Endpoints
+---
 
-See `backend/README.md` for detailed API documentation.
+## Estructura del Proyecto
 
-## License
+```
+src/
+├── App.jsx                         # Router y layout principal
+├── main.jsx                        # Punto de entrada
+├── index.css                       # Estilos globales
+├── context/
+│   └── AuthContext.jsx             # Contexto de autenticación JWT
+├── hooks/
+│   └── useUser.js                  # Hook para datos del usuario
+├── utils/
+│   └── auth.js                     # Helpers de autenticación
+├── services/
+│   ├── api.js                      # Cliente HTTP base (fetch + headers)
+│   ├── authService.js              # Login, registro, logout
+│   ├── userService.js              # Perfil, actualización de usuario
+│   ├── uploadService.js            # Subida de archivos
+│   ├── productService.js           # Productos de la tienda
+│   ├── newsService.js              # Noticias
+│   ├── eventService.js             # Eventos
+│   ├── galleryService.js           # Galería de imágenes
+│   └── contentService.js           # Contenido destacado (peleas, horarios)
+├── pages/
+│   ├── Login.jsx
+│   ├── Shop.jsx
+│   ├── News.jsx
+│   └── Fighters.jsx
+└── components/
+    ├── Header.jsx
+    ├── Hero.jsx
+    ├── Footer.jsx
+    ├── NewsSection.jsx
+    ├── ClassSchedule.jsx
+    ├── ProtectedRoute.jsx          # Guard de rutas protegidas
+    ├── admin/
+    │   ├── ContentManagement.jsx   # Peleas y horarios destacados
+    │   ├── EventManagement.jsx     # CRUD de eventos
+    │   ├── GalleryManagement.jsx   # CRUD de galería
+    │   ├── NewsManagement.jsx      # CRUD de noticias
+    │   ├── ProductManagement.jsx   # CRUD de productos
+    │   └── UserManagement.jsx      # CRUD de usuarios y roles
+    └── user/
+        ├── UserPanel.jsx           # Panel de usuario / admin
+        ├── UserEvents.jsx          # Eventos del usuario
+        └── AvatarUpload.jsx        # Subida de avatar
+```
 
-ISC
+---
+
+## Conexión con el Backend
+
+Este frontend consume la API [backendWardogs](https://github.com/kabalera82/backendWardogs).
+
+| Entorno | URL base |
+|---------|----------|
+| Producción | `https://backend-wardogs.vercel.app` |
+| Local | `http://localhost:3000` |
+
+Las rutas protegidas envían el token JWT en el header `Authorization: Bearer <token>`.
+
+---
+
+## Autor
+
+**kabalera82** — [GitHub](https://github.com/kabalera82)
