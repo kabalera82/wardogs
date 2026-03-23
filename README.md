@@ -58,10 +58,10 @@ La app estará disponible en `http://localhost:5173`.
 
 ```env
 # .env.development
-VITE_BACKEND_URL=http://localhost:3000
+VITE_BACKEND_UR
 
 # .env.production
-VITE_BACKEND_URL=https://backend-wardogs.vercel.app
+VITE_BACKEND_UR
 ```
 
 ---
